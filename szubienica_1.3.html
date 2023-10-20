@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szubienica</title>
+    <style>
+        body{
+            margin: 0;
+            /* background-color: rgb(25, 25, 25); */
+            background: linear-gradient(0deg, rgba(25,25,25,1) 0%, rgba(50,50,50,1) 100%);
+            background-attachment:fixed;
+            background-position: 50%;
+            background-size: cover;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* font-family: 'Times New Roman', Times, serif;   */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .word-box{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: rgb(25,25,25);
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            border: 1px solid white;
+            padding: 2px;
+        }
+        .letter{
+            height: 40px;
+            width: 40px;
+            border: 1px solid rgb(150, 150, 150);
+            border-radius: 10px;
+            margin: 5px;
+            color: white;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: rgb(50,50,50); */
+            background: linear-gradient(0deg, rgba(25,25,25,1) 0%, rgba(40,40,40,1) 100%);
+            /* background-image: none;
+            background-size: cover; */
+        }
+        .space{
+            height: 20px;
+            width: 20px;
+        }
+        .win{
+            font-size: 3em;
+            text-align: center;
+            border-radius: 20px;
+            /* background-color: rgb(25, 25, 25); */
+            background: linear-gradient(0deg, rgba(25,25,25,1) 0%, rgba(35,35,35,1) 100%);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 10px;
+            border: 1px solid white;
+        }
+        .counter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 60px;
+            color: white;
+            border: 1px solid rgb(255, 255, 255);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            font-size: 2em;
+            background-color: rgb(25,25,25);
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+        .btn{
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            border: 1px solid rgb(255, 255, 255);
+            color: white;
+            /* background-color: rgb(25,25,25); */
+            background: linear-gradient(0deg, rgba(37,37,37,1) 50%, rgba(80,80,80,1) 100%);
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .letterY{
+            height: 40px;
+            width: 40px;
+            border: 2px solid black;
+            margin: 5px;
+            color: black;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: yellow;
+            border-radius: 20px;
+            background: linear-gradient(-45deg, rgba(238,255,0,1) 0%, rgba(250,255,170,1) 100%);
+        }
+        .counterY{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 60px;
+            color: black;
+            border: 2px solid black;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            font-size: 2em;
+            background: linear-gradient(0deg, rgba(238,255,0,1) 0%, rgba(250,255,170,1) 100%);
+        }
+        .btnY{
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            border: 2px solid black;
+            color: black;
+            background: linear-gradient(0deg, rgba(238,255,0,1) 50%, rgba(250,255,170,1) 100%);
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .word-boxY{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: linear-gradient(0deg, rgb(247, 255, 130) 0%, rgba(255, 255, 255,1) 100%);
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 25px;
+            border: 2px solid black;
+            padding: 2px;
+        }
+        .winY{
+            font-size: 3em;
+            text-align: center;
+            border-radius: 30px;
+            /* background-color: rgb(25, 25, 25); */
+            background: linear-gradient(0deg, rgb(247, 255, 130) 0%, rgba(255, 255, 255,1) 100%);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 10px;
+            text-decoration: solid black 1px;
+            -webkit-text-stroke: 2px black;
+            border: 2px solid black;
+        }
+
+        
+        @media (orientation: landscape){
+            body{
+            background-position: top;
+            }
+            .word-box{
+            border-radius: 20px;
+            border: 2px solid white;
+            padding: 4px;
+            }
+            .letter{
+            height: 80px;
+            width: 80px;
+            border: 2px solid rgb(150, 150, 150);
+            border-radius: 20px;
+            margin: 10px;
+            font-size: 3em;
+            }
+            .space{
+            height: 40px;
+            width: 40px;
+            }
+            .win{
+            font-size: 6em;
+            border-radius: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 20px;
+            border: 2px solid white;
+            }
+            .counter{
+            height: 120px;
+            width: 120px;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            margin-bottom: 20px;
+            font-size: 4em;
+            border: 2px solid rgb(255, 255, 255);
+            }
+            .btn{
+            width: 60px;
+            height: 60px;
+            margin: 4px;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            font-size: 2em;
+            }
+            .letterY{
+            height: 80px;
+            width: 80px;
+            border: 4px solid black;
+            margin: 10px;
+            font-size: 3em;
+            border-radius: 40px;
+            }
+            .counterY{
+            height: 120px;
+            width: 120px;
+            border: 4px solid black;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            margin-bottom: 20px;
+            font-size: 4em;
+            }
+            .btnY{
+            width: 60px;
+            height: 60px;
+            margin: 4px;
+            border: 4px solid black;
+            border-radius: 20px;
+            font-size: 2em;
+            }
+            .word-boxY{
+            border-radius: 50px;
+            border: 4px solid black;
+            padding: 4px;
+            }
+            .winY{
+            font-size: 6em;
+            border-radius: 60px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 20px;
+            text-decoration: solid black 2px;
+            -webkit-text-stroke: 4px black;
+            border: 4px solid black;
+            }
+
+            }   
+    </style>
+</head>
+<body id="body">
+    <div class="counter" id="counter">5</div>
+    <div class="word-box" id="word-box">
+    </div>
+    <div class="container" style="margin-top: 10px;">
+    <button val="A" class="btn">A</button>
+    <button val="Ą" class="btn">Ą</button>
+    <button val="B" class="btn">B</button>
+    <button val="C" class="btn">C</button>
+    <button val="Ć" class="btn">Ć</button>
+    <button val="D" class="btn">D</button>
+    <button val="E" class="btn">E</button>
+    <button val="Ę" class="btn">Ę</button>
+    <button val="F" class="btn">F</button>
+</div><div class="container">
+    <button val="G" class="btn">G</button>
+    <button val="H" class="btn">H</button>
+    <button val="I" class="btn">I</button>
+    <button val="J" class="btn">J</button>
+    <button val="K" class="btn">K</button>
+    <button val="L" class="btn">L</button>
+    <button val="Ł" class="btn">Ł</button>
+    <button val="M" class="btn">M</button>
+    <button val="N" class="btn">N</button>
+</div><div class="container">
+    <button val="Ń" class="btn">Ń</button>
+    <button val="O" class="btn">O</button>
+    <button val="Ó" class="btn">Ó</button>
+    <button val="P" class="btn">P</button>
+    <button val="Q" class="btn">Q</button>
+    <button val="R" class="btn">R</button>
+    <button val="S" class="btn">S</button>
+    <button val="Ś" class="btn">Ś</button>
+    <button val="T" class="btn">T</button>
+</div><div class="container">
+    <button val="U" class="btn">U</button>
+    <button val="V" class="btn">V</button>
+    <button val="W" class="btn">W</button>
+    <button val="X" class="btn">X</button>
+    <button val="Y" class="btn">Y</button>
+    <button val="Z" class="btn">Z</button>
+    <button val="Ź" class="btn">Ź</button>
+    <button val="Ż" class="btn">Ż</button>
+</div>
+    <div class="win" id="win"></div>
+    <script>
+        const buttons = document.querySelectorAll('.btn');
+        const wordBox = document.querySelector('#word-box');
+        const lettermap = new Map();
+        const counterDiv = document.querySelector('#counter');
+        const end = document.querySelector('#win');
+        const body = document.querySelector('#body');
+        
+        let counter = 5;
+        let endGame = false;
+        let wordLength = 0;
+        let random = Math.round(85*Math.random());
+        let easterEgg = false;
+        const alfabet = ['A','Ą','B','C','Ć','D','E','Ę','F','G','H','I','J','K','L','Ł','M','N','Ń','O','Ó','P','Q','R','S','Ś','T','U','V','W','X','Y','Z','Ź','Ż']
+        const word = [
+            ['S','U','S'], //0
+            ['Ę','Ż'],
+            ['S','O','K'],
+            ['O','T','A','K','U'],
+            ['A','M','O','N','G','U','S'],
+            ['O','R','A','N','G','E'],
+            ['I','V','A','N'],
+            ['Y','A','S','U','O'],
+            ['S','H','O'],
+            ['O','E','T','K','E','R'],
+            ['C','R','U','I','S','E','R'], //10
+            ['N','I','K','I','T','O'],
+            ['K','A','R','C','I','Q'],
+            ['S','I','L','J','E','E'],
+            ['Z','B','O','C','Z','E','N','I','E','C'],
+            ['P','O','G','A','D','A','N','K','I'],
+            ['M','E','M','Y'],
+            ['R','E','G','U','L','A','M','I','N'],
+            ['P','O','G','A','D','U','S','Z','K','I'],
+            ['B','A','T','T','L','E','F','I','E','L','D'],
+            ['C','A','L','L',' ','O','F',' ','D','U','T','Y'], //20
+            ['M','I','N','E','C','R','A','F','T'],
+            ['C','H','A','D'],
+            ['A','N','I','M','E'],
+            ['O','R','Y','G','I','N','A','L'],
+            ['T','A','C','T','I','C','A','L'],
+            ['K','N','I','G','H','T','S'],
+            ['U','N','D','E','R','G','R','O','U','N','D'],
+            ['D','Y','I','N','G',' ','L','I','G','H','T'],
+            ['V','O','I','C','E',' ','C','H','A','T'],
+            ['C','H','A','T'], //30
+            ['H','E','Y',' ','S','E','X'],
+            ['T','R','Ó','J','C','A'],
+            ['A','D','M','I','N'],
+            ['A','D','M','I','N','I','S','T','R','A','C','J','A'], 
+            ['D','E','A','D',' ','C','H','A','T'],
+            ['H','I','S','Z','P','A','Ń','S','K','A',' ','I','N','K','W','I','Z','Y','C','J','A'],
+            ['N','E','C','O',' ','A','R','C'],
+            ['A','S','G'],
+            ['B','L','I','T','Z','K','R','I','E','G'],
+            ['C','R','I','N','G','E'], //40
+            ['J','E','B','A','N','Y',' ','S','P','A','M'],
+            ['P','O','S','Z','E','D','Ł',' ','I',' ','N','I','E',' ','W','R','Ó','C','I',' ','J','U','Ż',],
+            ['N','O','W','I',' ','T','O','W','A','R','Z','Y','S','Z','E',' ','B','R','O','N','I'], 
+            ['S','T','R','A','Ż','N','I','K',' ','B','R','O','W','C','A'], //44
+            ['W','E','E','B'],
+            ['G','R','A','J','E','K'],
+            ['G','A','M','E','R'],
+            ['N','S','F','W'],
+            ['D','O',' ','G','E','J','M','I','E','N','I','A'],
+            ['P','I','E','K','I','E','L','N','E',' ','W','I','Ę','Z','I','E','N','I','E'], //50
+            ['W','I','D','E','O','S','Y'],
+            ['K','A','Ż','D','Y',' ','J','E','D','E','N'],
+            ['D','L','A',' ','W','Y','C','I','S','Z','O','N','E','G','O'],
+            ['K','I','T','U','C','H'],
+            ['P','O','L','I','T','Y','K','A'],
+            ['R','E','L','I','G','I','A'],
+            ['X','D'],
+            ['U','W','U'],
+            ['O','W','O'],
+            ['P','E','T','I','M','E','L','E'], //60
+            ['H','A','S','Ł','O'],
+            ['P','H','A','S','M','O','P','H','O','B','I','A'],
+            ['T','W','T'], //63
+            ['P','I','W','O'],
+            ['C','H','U','J',' ','I',' ','P','R','O','S','T','A','K'],
+            ['W','O','M','A','N'],
+            ['R','I','C','K',' ','A','S','T','L','E','Y'],
+            ['R','I','C','K','R','O','L','L'],
+            ['L','E','G','O'],
+            ['R','O','Z','K','M','I','N','Y'], //70
+            ['A','R','T'],
+            ['R','E','P','T','Y','L','I','A','N','I','N'],
+            ['R','A','C','I','S','T'],
+            ['A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A'],
+            ['D','Z','B','A','N'],
+            ['S','Z','Y','S','Z','K','A'],
+            ['K','O','Z','A','K','I'],
+            ['G','O','R','Z','A','Ł','K','A'],
+            ['S','Z','U','B','I','E','N','I','C','A'],
+            ['D','I','S','C','O','R','D'], //80
+            ['S','Z','U','B','I','E','N','I','C','A'],
+            ['S','E','E','E','E','X'],
+            ['E'],
+            ['P','R','Y','N','C','Y','P','A','Ł','K','I'],
+            ['P','A','N','Z','E','R','K','A','M','P','F','W','A','G','E','N']   //85
+    ]
+        console.log('random: '+random);
+            const endTable = [
+                ['WIN :3', 'WYGRANA', 'GRATKI :3', 'YEY ^^', 'UwU', 'OwO', 'TAK TO SIĘ ROBI', ':D', 'WINNER WINNER CHICKEN DINNER', 'WINNER', 'WYGRAŁEŚ :D', ':)', ':O',':3','>:3', 'NICE'],
+                ['LOOSE', 'PRZEGRANA', 'OOF', 'BRUH', ':|', ':C', '|:(', 'QwQ', 'qwq', 'D:', 'SADGE', ':(', 'PŁAKÓWA', ':/', 'FINISH HIM!', 'CRINGE']
+            ]
+        let randomEnd = Math.round(15*Math.random());
+        let win = endTable[0][randomEnd];
+        let loose = endTable[1][randomEnd];
+        word[random].map(e=>{
+            if(e == ' '){
+            const newEl0 = document.createElement('div');
+            wordBox.appendChild(newEl0);
+            newEl0.classList.add('space');
+            }else{
+            const newEl = document.createElement('div');
+            wordBox.appendChild(newEl);
+            newEl.classList.add('letter');
+            newEl.setAttribute('value', e);
+            newEl.setAttribute('id', e);
+            if(lettermap.has(e)){
+                lettermap.get(e).push(newEl)
+            }else{
+                lettermap.set(e, [newEl])
+            }
+
+            wordLength = wordLength + 1;
+        }
+        })
+        
+        if(wordLength >= 8 && wordLength < 15){
+            counter = wordLength -1;
+            counterDiv.innerHTML = counter;
+        }
+        if(wordLength >=15){
+            counter = 15;
+            counterDiv.innerHTML = counter;
+        }
+
+            buttons.forEach(el => {
+            el.addEventListener('click', function(){
+                
+                if(endGame == false){
+
+                if (lettermap.has(this.innerHTML)){
+                    lettermap.get(this.innerHTML).forEach(ele =>{
+                        ele.innerHTML = this.innerHTML;
+                        // ele.style.backgroundImage = 'none';
+                        wordLength = wordLength -1;
+                            this.style.background = 'linear-gradient(0deg, rgba(0,116,21,1) 0%, rgba(0,255,17,1) 100%)';
+                    })                     
+                }else{
+                    counter = counter -1;
+                            this.style.background = 'linear-gradient(0deg, rgba(116,0,0,1) 0%, rgba(255,0,0,1) 100%)';
+                }
+                counterDiv.innerHTML = counter;
+                el.setAttribute('disabled', true);
+                if(wordLength == 0){
+                        endGame = true;
+                        end.innerHTML = win;
+                        end.style.color = 'rgb(0,255,17)';
+                        console.log('gra zakończona wygraną');
+                    }
+                if(counter == 0){
+                    endGame = true;
+                    end.innerHTML = loose;
+                    end.style.color = 'rgb(255,0,0)';
+                    console.log('gra zakończona przegraną');
+                }
+                console.log('przycisk: '+el.getAttribute('val'));
+                console.log('pozostałe litery: '+wordLength);
+            }
+            })
+        })
+        counterDiv.addEventListener('click', function(){
+            console.log("EASTER EGG!!!")
+                body.style.backgroundImage = 'url(./otaku.jpg)';
+                const letters = Array.from(document.getElementsByClassName('letter'));
+                letters.forEach (x => {
+                    x.classList.remove('letter');
+                    x.classList.add('letterY');
+                })
+                buttons.forEach(x =>{
+                    x.classList.remove('btn');
+                    x.classList.add('btnY');
+                })
+                counterDiv.classList.remove('counter');
+                counterDiv.classList.add('counterY');
+                wordBox.classList.remove('word-box');
+                wordBox.classList.add('word-boxY');
+                end.classList.remove('win');
+                end.classList.add('winY');
+        })
+    </script>
+</body>
+</html>
